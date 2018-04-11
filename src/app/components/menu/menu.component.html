@@ -1,78 +1,48 @@
 <div class="container">
+
   <div class="col-md-4">
     <form>
-      <h2>1. Customs Checkboxes</h2>
-      <div class="form-check">
+      <h2>Лапша</h2>
+
+      <div class="form-check" *ngFor="let menuItem of noodles">
         <label>
-          <input type="checkbox" name="check" checked> <span class="label-text">Option 01</span>
+          <input type="radio" name="radio"> <span class="label-text">{{menuItem.name}}</span>
         </label>
       </div>
-      <div class="form-check">
-        <label>
-          <input type="checkbox" name="check"> <span class="label-text">Option 02</span>
-        </label>
-      </div>
-      <div class="form-check">
-        <label>
-          <input type="checkbox" name="check"> <span class="label-text">Option 03</span>
-        </label>
-      </div>
-      <div class="form-check">
-        <label>
-          <input type="checkbox" name="check" disabled> <span class="label-text">Option 04</span>
-        </label>
-      </div>
+
     </form>
+  </div>
+
+  <div class="col-md-4">
+    <form>
+      <h2>Наполнители</h2>
+
+      <div class="form-check" *ngFor="let menuItem of fillers">
+        <label>
+          <input type="checkbox" name="check"> <span class="label-text">{{menuItem.name}}</span>
+        </label>
+      </div>
+
+    </form>
+  </div>
+
+  <div class="col-md-4">
+    <form>
+      <h2>Доп ингридиенты</h2>
+
+      <div class="form-check" *ngFor="let menuItem of misc">
+        <label>
+          <input type="checkbox" name="check"> <span class="label-text">{{menuItem.name}}</span>
+        </label>
+      </div>
+
+    </form>
+  </div>
+
+  <div class="col-md-12 text-center">
+    <button>
+      Сделать заказ
+    </button>
+  </div>
 
   </div>
-  <div class="col-md-4">
-    <form>
-      <h2>2. Customs Radios</h2>
-      <div class="form-check">
-        <label>
-          <input type="radio" name="radio" checked> <span class="label-text">Option 01</span>
-        </label>
-      </div>
-      <div class="form-check">
-        <label>
-          <input type="radio" name="radio"> <span class="label-text">Option 02</span>
-        </label>
-      </div>
-      <div class="form-check">
-        <label>
-          <input type="radio" name="radio"> <span class="label-text">Option 03</span>
-        </label>
-      </div>
-      <div class="form-check">
-        <label>
-          <input type="radio" name="radio" disabled> <span class="label-text">Option 04</span>
-        </label>
-      </div>
-    </form>
-  </div>
-  <div class="col-md-4">
-    <form>
-      <h2>3.Radios Toggles</h2>
-      <div class="form-check">
-        <label class="toggle">
-          <input type="radio" name="toggle" checked> <span class="label-text">Option 01</span>
-        </label>
-      </div>
-      <div class="form-check">
-        <label class="toggle">
-          <input type="radio" name="toggle"> <span class="label-text">Option 02</span>
-        </label>
-      </div>
-      <div class="form-check">
-        <label class="toggle">
-          <input type="radio" name="toggle"> <span class="label-text">Option 03</span>
-        </label>
-      </div>
-      <div class="form-check">
-        <label class="toggle">
-          <input type="radio" name="toggle" disabled> <span class="label-text">Option 04</span>
-        </label>
-      </div>
-    </form>
-  </div>
-</div>

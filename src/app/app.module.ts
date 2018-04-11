@@ -8,6 +8,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing/app-routing.module';
 import { MenuComponent } from './components/menu/menu.component';
+import { MenuService } from './services/menu/menu.service';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,7 @@ import { MenuComponent } from './components/menu/menu.component';
     FormsModule,
     BrowserModule
   ],
-  providers: [AuthService],
+  providers: [AuthService, MenuService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
