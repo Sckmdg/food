@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container menu-container">
 
   <div class="col-md-4">
     <form>
@@ -6,7 +6,7 @@
 
       <div class="form-check" *ngFor="let menuItem of noodles">
         <label>
-          <input type="radio" name="radio"> <span class="label-text">{{menuItem.name}}</span>
+          <input type="checkbox" (click)="addToOrder(menuItem, $event)" name="radio"> <span class="label-text">{{menuItem.name}} ({{menuItem.price}})</span>
         </label>
       </div>
 
@@ -19,7 +19,7 @@
 
       <div class="form-check" *ngFor="let menuItem of fillers">
         <label>
-          <input type="checkbox" name="check"> <span class="label-text">{{menuItem.name}}</span>
+          <input type="checkbox" (click)="addToOrder(menuItem, $event)" name="check"> <span class="label-text">{{menuItem.name}} ({{menuItem.price}})</span>
         </label>
       </div>
 
@@ -32,15 +32,21 @@
 
       <div class="form-check" *ngFor="let menuItem of misc">
         <label>
-          <input type="checkbox" name="check"> <span class="label-text">{{menuItem.name}}</span>
+          <input type="checkbox" (click)="addToOrder(menuItem, $event)" name="check"> <span class="label-text">{{menuItem.name}} ({{menuItem.price}})</span>
         </label>
       </div>
 
     </form>
   </div>
 
-  <div class="col-md-12 text-center">
-    <button>
+  <div class="col-md-12 text-center m25">
+    <span><b>Ваш заказ: </b></span>
+    <span *ngFor="let orderItem of order"> {{orderItem.name}} ({{orderItem.price}}) <span *ngIf="orderItem.name !== order[order.length - 1].name">+</span> </span>
+    <span> = {{price}} сом</span>
+  </div>
+
+  <div class="col-md-12 text-center m25">
+    <button class="btn btn-default" (click)="sendOrder()" [disabled]="!price">
       Сделать заказ
     </button>
   </div>

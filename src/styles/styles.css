@@ -9,3 +9,15 @@ body {
   padding: 50px;
   background: #f4f4f4;
 }
+
+.mt20 {
+  margin-top: 20px;
+}
+
+.mb40 {
+  margin-bottom: 40px;
+}
+
+.m25 {
+  margin: 25px 0;
+}

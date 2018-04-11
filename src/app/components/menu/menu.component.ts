@@ -8,15 +8,18 @@ import { MenuService } from '../../services/menu/menu.service';
   styleUrls: ['./menu.component.css']
 })
 export class MenuComponent implements OnInit {
-  noodles: MenuItem[];
-  fillers: MenuItem[];
-  misc: MenuItem[];
+  price: number;
+  order: MenuItem[] = [];
+  fillers: MenuItem[] = [];
+  misc: MenuItem[] = [];
+  noodles: MenuItem[] = [];
 
   constructor(
     private menuService: MenuService
   ) {}
 
   ngOnInit() {
+    this.price = 0;
     this.menuService.getWok();
 
     this.noodles = [
@@ -33,6 +36,22 @@ export class MenuComponent implements OnInit {
       { id: 0, name: 'Курица', price: 40 },
       { id: 1, name: 'Вешанки', price: 30 }
     ];
+  }
+
+  addToOrder(item: MenuItem, event: any): void {
+    if (event.target.checked) {
+      this.order.push(item);
+      this.price += item.price;
+    } else {
+      this.order = this.order.filter(h => h !== item);
+      this.price -= item.price;
+    }
+  }
+
+  sendOrder(): void {
+    if (this.price) {
+      console.log('order has been sent');
+    }
   }
 
 }

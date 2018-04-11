@@ -114,3 +114,17 @@ input[type="radio"]:disabled + .label-text:before{
   75%{transform: scale(1.4);}
   100%{transform: scale(1);}
 }
+
+.menu-container {
+  background: #FFFFFF;
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,0.4);
+}
+
+h2 {
+  font-weight:600;
+  text-transform:capitalize;
+  text-align:center;
+  color:#FFF;
+  background:#72d6f5;
+  padding:25px 0px;
+}
