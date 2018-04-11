@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuItem } from './menu-item';
 import { MenuService } from '../../services/menu/menu.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-menu',
@@ -15,7 +16,8 @@ export class MenuComponent implements OnInit {
   noodles: MenuItem[] = [];
 
   constructor(
-    private menuService: MenuService
+    private menuService: MenuService,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -51,6 +53,7 @@ export class MenuComponent implements OnInit {
   sendOrder(): void {
     if (this.price) {
       console.log('order has been sent');
+      this.router.navigate(['/orders']);
     }
   }
 
