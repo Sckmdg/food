@@ -38,6 +38,12 @@ export class MenuComponent implements OnInit {
       { id: 0, name: 'Курица', price: 40 },
       { id: 1, name: 'Вешанки', price: 30 }
     ];
+
+    this.menuService.getTest(1)
+      .subscribe(
+        test => console.log(test),
+        error => console.log(error)
+      );
   }
 
   addToOrder(item: MenuItem, event: any): void {

@@ -13,6 +13,7 @@ const httpOptions = {
 export class MenuService {
 
   private menusUrl = 'api/menu';
+  private testUrl = 'https://jsonplaceholder.typicode.com';
 
   constructor(
     private http: HttpClient
@@ -24,5 +25,10 @@ export class MenuService {
 
   getOrders(): void {
     console.log('orders has been called');
+  }
+
+  getTest(id: number): Observable<Object> {
+    const url = `${this.testUrl}/posts/${id}`;
+    return this.http.get<Object>(url);
   }
 }
