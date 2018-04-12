@@ -7,10 +7,12 @@ import { Router } from '@angular/router';
   styleUrls: ['./auth.component.css']
 })
 export class AuthComponent {
-  isForgot: boolean;
+  authComponent = 'login';
   email: '';
   password: '';
   forgotEmail: '';
+  registerEmail: '';
+  registerPassword: '';
 
   constructor(
     private router: Router
@@ -32,6 +34,10 @@ export class AuthComponent {
 
   onForgot(): void {
     console.log('Submit Forget Form');
+  }
+
+  onRegister(): void {
+    console.log('Submit Register Form');
   }
 
 }

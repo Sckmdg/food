@@ -39,10 +39,10 @@
     </form>
   </div>
 
-  <div class="col-md-12 text-center m25">
+  <div class="col-md-12 text-center mt25">
     <span><b>Ваш заказ: </b></span>
     <span *ngFor="let orderItem of order"> {{orderItem.name}} ({{orderItem.price}}) <span *ngIf="orderItem.name !== order[order.length - 1].name">+</span> </span>
-    <span> = {{price}} сом</span>
+    <span> = <b>{{price}}</b> сом</span>
   </div>
 
   <div class="col-md-12 text-center m25">
