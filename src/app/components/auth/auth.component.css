@@ -68,7 +68,9 @@ input[type=text], input[type=password], input[type=email] {
   width: 100%;
   margin: 0 0 30px 0;
   padding: 0;
+  padding-left: 5px;
   box-shadow: none;
+  transition: .5s ease;
 }
 
 input[type=text]:focus, input[type=password]:focus, input[type=email]:focus {
@@ -78,4 +80,22 @@ input[type=text]:focus, input[type=password]:focus, input[type=email]:focus {
 
 .forgot:hover {
   cursor: pointer;
+}
+
+.ng-untouched {
+  border-left: 0 !important;
+}
+
+.ng-valid[required], .ng-valid.required  {
+  border-left: 5px solid #42A948;
+}
+
+.ng-invalid:not(form)  {
+  border-left: 5px solid #a94442;
+}
+
+.alert {
+  color: #a94442;
+  background-color: #f2dede;
+  border-color: #ebccd1;
 }
