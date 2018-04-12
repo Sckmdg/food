@@ -1,16 +1,25 @@
 <div class="container">
-  <h1>
-    {{totalPrice}}
+  <h1 class="text-center total-price">
+    Общая цена {{totalPrice}}
   </h1>
   <div class="row">
-    <div class="[ col-xs-12 col-sm-offset-2 col-sm-8 ]">
+    <div class="col-md-12">
       <ul class="event-list">
 
-        <li>
+        <li *ngFor="let order of orders" class="col-md-4">
           <div class="info">
             <div class="row">
               <div class="col-sm-12">
-                <h2 class="title">Laco 1st year anniversary</h2>
+                <h4 class="title"><b>{{order.username}}</b></h4>
+
+                <span *ngFor="let userOrder of order.order">
+                  {{userOrder.name}} ({{userOrder.price}})
+                  <span *ngIf="userOrder.name !== order.order[order.order.length - 1].name">+ </span>
+                </span>
+
+                <span>
+                  = <b>{{calcSingleOrder(order.order)}}</b>
+                </span>
               </div>
             </div>
           </div>

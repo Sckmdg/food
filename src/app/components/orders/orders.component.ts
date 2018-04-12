@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 // import { MenuItem } from '../menu/menu-item';
 import { MenuService } from '../../services/menu/menu.service';
+import { MenuItem } from "../menu/menu-item";
 
 @Component({
   selector: 'app-orders',
@@ -43,6 +44,12 @@ export class OrdersComponent implements OnInit {
         this.totalPrice += order.price;
       })
     })
+  }
+
+  calcSingleOrder(order: MenuItem[]): number {
+    let price = 0;
+    order.map(item => price += Number(item.price))
+    return price
   }
 
 }
