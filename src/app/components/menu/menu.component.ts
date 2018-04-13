@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./menu.component.css']
 })
 export class MenuComponent implements OnInit {
-  price: number;
+  price = 0;
   order: MenuItem[] = [];
   fillers: MenuItem[] = [];
   misc: MenuItem[] = [];
@@ -21,23 +21,54 @@ export class MenuComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.price = 0;
     this.menuService.getWok();
 
     this.noodles = [
-      { id: 0, name: 'Удон', price: 60 },
-      { id: 1, name: 'Рамен', price: 60 }
+      { id: 0, name: 'Удон', price: 60, checked: false, disabled: false },
+      { id: 1, name: 'Рамен', price: 60, checked: false, disabled: false }
     ];
 
     this.fillers = [
-      { id: 0, name: 'Курица в соусе терияки', price: 70 },
-      { id: 1, name: 'Курица в пекинском соусе', price: 70 }
+      { id: 0, name: 'Курица в соусе терияки', price: 70, checked: false, disabled: false },
+      { id: 1, name: 'Курица в пекинском соусе', price: 70, checked: false, disabled: false }
     ];
 
     this.misc = [
-      { id: 0, name: 'Курица', price: 40 },
-      { id: 1, name: 'Вешанки', price: 30 }
+      { id: 0, name: 'Курица', price: 40, checked: false, disabled: false },
+      { id: 1, name: 'Вешанки', price: 30, checked: false, disabled: false }
     ];
+
+    if (JSON.parse(localStorage.getItem('order'))) {
+      const order = JSON.parse(localStorage.getItem('order')).order;
+      order.map(item => {
+
+        this.noodles.map(noodle => {
+          if (this.compareItemFields(noodle, item)) {
+            noodle.checked = true;
+            this.order.push(item);
+            this.price += item.price;
+          }
+        });
+
+        this.fillers.map(filler => {
+          if (this.compareItemFields(filler, item)) {
+            filler.checked = true;
+            this.order.push(item);
+            this.price += item.price;
+          }
+        });
+
+        this.misc.map(misc => {
+          if (this.compareItemFields(misc, item)) {
+            misc.checked = true;
+            this.order.push(item);
+            this.price += item.price;
+          }
+        });
+      });
+
+      localStorage.removeItem('order')
+    }
 
     this.menuService.getTest(1)
       .subscribe(
@@ -51,7 +82,11 @@ export class MenuComponent implements OnInit {
       this.order.push(item);
       this.price += item.price;
     } else {
-      this.order = this.order.filter(h => h !== item);
+      this.order = this.order.filter(h => {
+        item.checked = false;
+        h.checked = false;
+        return JSON.stringify(h) !== JSON.stringify(item)
+      });
       this.price -= item.price;
     }
   }
@@ -61,6 +96,10 @@ export class MenuComponent implements OnInit {
       console.log('order has been sent');
       this.router.navigate(['/orders']);
     }
+  }
+
+  compareItemFields(first: MenuItem, second: MenuItem): boolean {
+    return first.id === second.id && first.name === second.name && first.price === second.price
   }
 
 }

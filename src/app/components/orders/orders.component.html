@@ -11,6 +11,8 @@
             <div class="row">
               <div class="col-sm-12">
                 <h4 class="title"><b>{{order.username}}</b></h4>
+                <span *ngIf="order.username === user" class="edit" (click)="onEdit(order)">✎</span>
+                <span *ngIf="order.username === user" class="delete" (click)="onDelete(order)">X</span>
 
                 <span *ngFor="let userOrder of order.order">
                   {{userOrder.name}} ({{userOrder.price}})

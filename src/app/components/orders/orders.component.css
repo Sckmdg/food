@@ -106,3 +106,27 @@ h2{
   background: #72d6f5;
   padding: 25px 0px;
 }
+
+.edit, .delete {
+  background: #72d6f5;
+  position: absolute;
+  top: 5px;
+  right: -15px;
+  color: #fff;
+  font-size: 25px;
+  width: 35px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 25px;
+}
+
+.edit:hover, .delete:hover {
+  cursor: pointer;
+}
+
+.delete {
+  top: 70px;
+  background: #a94442;
+}

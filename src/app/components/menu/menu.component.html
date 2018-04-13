@@ -6,7 +6,14 @@
 
       <div class="form-check" *ngFor="let menuItem of noodles">
         <label>
-          <input type="checkbox" (click)="addToOrder(menuItem, $event)" name="radio"> <span class="label-text">{{menuItem.name}} ({{menuItem.price}})</span>
+          <input
+            type="checkbox"
+            [checked]="menuItem.checked"
+            (click)="addToOrder(menuItem, $event)"
+            name="check"
+            [disabled]="menuItem.disabled"
+          >
+          <span class="label-text">{{menuItem.name}} ({{menuItem.price}})</span>
         </label>
       </div>
 
@@ -19,7 +26,14 @@
 
       <div class="form-check" *ngFor="let menuItem of fillers">
         <label>
-          <input type="checkbox" (click)="addToOrder(menuItem, $event)" name="check"> <span class="label-text">{{menuItem.name}} ({{menuItem.price}})</span>
+          <input
+            type="checkbox"
+            [checked]="menuItem.checked"
+            (click)="addToOrder(menuItem, $event)"
+            name="check"
+            [disabled]="menuItem.disabled"
+          >
+          <span class="label-text">{{menuItem.name}} ({{menuItem.price}})</span>
         </label>
       </div>
 
@@ -32,7 +46,14 @@
 
       <div class="form-check" *ngFor="let menuItem of misc">
         <label>
-          <input type="checkbox" (click)="addToOrder(menuItem, $event)" name="check"> <span class="label-text">{{menuItem.name}} ({{menuItem.price}})</span>
+          <input
+            type="checkbox"
+            [checked]="menuItem.checked"
+            (click)="addToOrder(menuItem, $event)"
+            name="check"
+            [disabled]="menuItem.disabled"
+          >
+          <span class="label-text">{{menuItem.name}} ({{menuItem.price}})</span>
         </label>
       </div>
 
