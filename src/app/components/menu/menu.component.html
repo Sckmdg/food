@@ -1,63 +1,14 @@
 <div class="container menu-container">
 
-  <div class="col-md-4">
-    <form>
-      <h2>Лапша</h2>
-
-      <div class="form-check" *ngFor="let menuItem of noodles">
-        <label>
-          <input
-            type="checkbox"
-            [checked]="menuItem.checked"
-            (click)="addToOrder(menuItem, $event)"
-            name="check"
-            [disabled]="menuItem.disabled"
-          >
-          <span class="label-text">{{menuItem.name}} ({{menuItem.price}})</span>
-        </label>
-      </div>
-
-    </form>
-  </div>
-
-  <div class="col-md-4">
-    <form>
-      <h2>Наполнители</h2>
-
-      <div class="form-check" *ngFor="let menuItem of fillers">
-        <label>
-          <input
-            type="checkbox"
-            [checked]="menuItem.checked"
-            (click)="addToOrder(menuItem, $event)"
-            name="check"
-            [disabled]="menuItem.disabled"
-          >
-          <span class="label-text">{{menuItem.name}} ({{menuItem.price}})</span>
-        </label>
-      </div>
-
-    </form>
-  </div>
-
-  <div class="col-md-4">
-    <form>
-      <h2>Доп ингридиенты</h2>
-
-      <div class="form-check" *ngFor="let menuItem of misc">
-        <label>
-          <input
-            type="checkbox"
-            [checked]="menuItem.checked"
-            (click)="addToOrder(menuItem, $event)"
-            name="check"
-            [disabled]="menuItem.disabled"
-          >
-          <span class="label-text">{{menuItem.name}} ({{menuItem.price}})</span>
-        </label>
-      </div>
-
-    </form>
+  <div [ngSwitch]="todaysMenu">
+    <app-wok
+      *ngSwitchCase="'wok'"
+      (addToOrder)="addToOrder($event)"
+      [fillers]="fillers"
+      [misc]="misc"
+      [noodles]="noodles"
+    >
+    </app-wok>
   </div>
 
   <div class="col-md-12 text-center mt25">

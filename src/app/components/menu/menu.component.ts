@@ -14,6 +14,7 @@ export class MenuComponent implements OnInit {
   fillers: MenuItem[] = [];
   misc: MenuItem[] = [];
   noodles: MenuItem[] = [];
+  todaysMenu = 'wok';
 
   constructor(
     private menuService: MenuService,
@@ -21,6 +22,8 @@ export class MenuComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.todaysMenu = this.menuService.getTodaysMenu();
+    // TODO ob subscribe method swich case for different menus
     this.menuService.getWok();
 
     this.noodles = [
@@ -70,14 +73,16 @@ export class MenuComponent implements OnInit {
       localStorage.removeItem('order')
     }
 
-    this.menuService.getTest(1)
-      .subscribe(
-        test => console.log(test),
-        error => console.log(error)
-      );
+    // this.menuService.getTest(1)
+    //   .subscribe(
+    //     test => console.log(test),
+    //     error => console.log(error)
+    //   );
   }
 
-  addToOrder(item: MenuItem, event: any): void {
+  addToOrder(response: any): void {
+    const { event, item } = response;
+
     if (event.target.checked) {
       this.order.push(item);
       this.price += item.price;

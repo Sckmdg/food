@@ -31,4 +31,8 @@ export class MenuService {
     const url = `${this.testUrl}/posts/${id}`;
     return this.http.get<Object>(url);
   }
+
+  getTodaysMenu(): string {
+    return 'wok'
+  }
 }

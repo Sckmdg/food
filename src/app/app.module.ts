@@ -10,13 +10,15 @@ import { AppRoutingModule } from './app-routing/app-routing.module';
 import { MenuComponent } from './components/menu/menu.component';
 import { MenuService } from './services/menu/menu.service';
 import { OrdersComponent } from './components/orders/orders.component';
+import { WokComponent } from './components/menus/wok/wok.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AuthComponent,
     MenuComponent,
-    OrdersComponent
+    OrdersComponent,
+    WokComponent
   ],
   imports: [
     BrowserModule,
