@@ -33,6 +33,6 @@ export class MenuService {
   }
 
   getTodaysMenu(): string {
-    return 'wok'
+    return 'wok';
   }
 }

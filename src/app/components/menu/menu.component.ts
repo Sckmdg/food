@@ -70,7 +70,7 @@ export class MenuComponent implements OnInit {
         });
       });
 
-      localStorage.removeItem('order')
+      localStorage.removeItem('order');
     }
 
     // this.menuService.getTest(1)
@@ -90,7 +90,7 @@ export class MenuComponent implements OnInit {
       this.order = this.order.filter(h => {
         item.checked = false;
         h.checked = false;
-        return JSON.stringify(h) !== JSON.stringify(item)
+        return JSON.stringify(h) !== JSON.stringify(item);
       });
       this.price -= item.price;
     }
@@ -104,7 +104,7 @@ export class MenuComponent implements OnInit {
   }
 
   compareItemFields(first: MenuItem, second: MenuItem): boolean {
-    return first.id === second.id && first.name === second.name && first.price === second.price
+    return first.id === second.id && first.name === second.name && first.price === second.price;
   }
 
 }

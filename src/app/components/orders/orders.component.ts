@@ -46,14 +46,14 @@ export class OrdersComponent implements OnInit {
     this.orders.map(userOrder => {
       userOrder.order.map(order => {
         this.totalPrice += order.price;
-      })
-    })
+      });
+    });
   }
 
   calcSingleOrder(order: MenuItem[]): number {
     let price = 0;
-    order.map(item => price += Number(item.price))
-    return price
+    order.map(item => price += Number(item.price));
+    return price;
   }
 
   onDelete(order: MenuItem): void {
